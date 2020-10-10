@@ -32,32 +32,35 @@
 			<p id="hour">12</p>
 			<input type="range" id="nr" min="0" max="23" step="1" class="myRange" oninput="catchNumber()" name="">
 
-
+			<h3 class="showDate"></h3>
 		</header>
 		<div class="container">
 				<div class="arrow">
-					<button class="prev">&lt;</button>  
+					<button class="arrow__prev">&lt;</button>  
 				</div>
 				<div class="calendar">
 					
-					<div class="week-days">
-						<div class="week-day holiday">Sunday</div>
-						<div class="week-day">Monday</div>
-						<div class="week-day">Tuesday</div>
-						<div class="week-day">Wednesday</div>
-						<div class="week-day">Thursday</div>
-						<div class="week-day">Friday</div>
-						<div class="week-day holiday">Saturday</div>
+					<div class="calendar__week">
+						<div class="calendar__week-day holiday">Sunday</div>
+						<div class="calendar__week-day">Monday</div>
+						<div class="calendar__week-day">Tuesday</div>
+						<div class="calendar__week-day">Wednesday</div>
+						<div class="calendar__week-day">Thursday</div>
+						<div class="calendar__week-day">Friday</div>
+						<div class="calendar__week-day holiday">Saturday</div>
 					</div>
-					<div class="dates">
+					<div class="calendar__dates">
 						
 					</div>
 				</div>
 				<div class="arrow">
-					<button class="next">&gt;</button>
+					<button class="arrow__next">&gt;</button>
 				</div>
 		</div>
-		<footer>footer</footer>
+		<footer>
+			<button class="btn-today">Go on Today</button>
+
+		</footer>
 	</main>
 
 	<!-- <script type="text/javascript" src="script.js"></script> -->
