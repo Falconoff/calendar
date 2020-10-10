@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calendar</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+	<main>
+		<header>
+			Month & Year <br>
+			<input type="date" name="date"><br>
+			<input type="time" name="time">
+			<input name="month" type="month">
+			<input type="text" name="textmy" size="20" maxlength="6" spaceholder="Текст">
+			<p>выберите год</p>
+			<form>
+				<select name="month">
+					<option value="2020" selected>2020</option>
+					<option value="2020">2021</option>
+					<option value="2020">2022</option>
+					<option value="2020">2023</option>
+					<option value="2020">2024</option>
+					<option value="2020">2025</option>
+				</select>
+			</form>
+
+			<!-- ползунок -->
+			<p id="hour">12</p>
+			<input type="range" id="nr" min="0" max="23" step="1" class="myRange" oninput="catchNumber()" name="">
+
+
+		</header>
+		<div class="container">
+				<div class="arrow">
+					<button class="prev">&lt;</button>  
+				</div>
+				<div class="calendar">
+					
+					<div class="week-days">
+						<div class="week-day holiday">Sunday</div>
+						<div class="week-day">Monday</div>
+						<div class="week-day">Tuesday</div>
+						<div class="week-day">Wednesday</div>
+						<div class="week-day">Thursday</div>
+						<div class="week-day">Friday</div>
+						<div class="week-day holiday">Saturday</div>
+					</div>
+					<div class="dates">
+						
+					</div>
+				</div>
+				<div class="arrow">
+					<button class="next">&gt;</button>
+				</div>
+		</div>
+		<footer>footer</footer>
+	</main>
+
+	<!-- <script type="text/javascript" src="script.js"></script> -->
+	<script type="text/javascript" src="script_cal.js"></script>
+
+</body>
+</html>
