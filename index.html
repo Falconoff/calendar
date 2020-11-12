@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>calendar</title>
+	<title>month</title>
 	<meta charset="utf-8">
 
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -9,62 +9,98 @@
 </head>
 <body>
 
-	<main>
-		<header>
-			Month & Year <br>
-			<input type="date" name="date"><br>
-			<input type="time" name="time">
-			<input name="month" type="month">
-			<input type="text" name="textmy" size="20" maxlength="6" spaceholder="Текст">
-			<p>выберите год</p>
-			<form>
-				<select name="month">
-					<option value="2020" selected>2020</option>
-					<option value="2020">2021</option>
-					<option value="2020">2022</option>
-					<option value="2020">2023</option>
-					<option value="2020">2024</option>
-					<option value="2020">2025</option>
-				</select>
-			</form>
+<main>
+	<header>
+		<!-- Month & Year <br>
+		<input type="date" name="date"><br>
+		<input type="time" name="time">
+		<input name="month" type="month">
+		<input type="text" name="textmy" size="20" maxlength="6" spaceholder="Текст">
+		<p>выберите год</p> -->
+		<!-- <form>
+			<select name="month">
+				<option value="2020" selected>2020</option>
+				<option value="2020">2021</option>
+				<option value="2020">2022</option>
+				<option value="2020">2023</option>
+				<option value="2020">2024</option>
+				<option value="2020">2025</option>
+			</select>
+		</form> -->
 
-			<!-- ползунок -->
-			<p id="hour">12</p>
-			<input type="range" id="nr" min="0" max="23" step="1" class="myRange" oninput="catchNumber()" name="">
+		<!-- ползунок -->
+		<!-- <p id="hour">12</p>
+		<input type="range" id="nr" min="0" max="23" step="1" class="myRange" oninput="catchNumber()" name=""> -->
 
-			<h3 class="showDate"></h3>
-		</header>
-		<div class="container">
-				<div class="arrow">
-					<button class="arrow__prev">&lt;</button>  
-				</div>
-				<div class="calendar">
-					
-					<div class="calendar__week">
-						<div class="calendar__week-day holiday">Sunday</div>
-						<div class="calendar__week-day">Monday</div>
-						<div class="calendar__week-day">Tuesday</div>
-						<div class="calendar__week-day">Wednesday</div>
-						<div class="calendar__week-day">Thursday</div>
-						<div class="calendar__week-day">Friday</div>
-						<div class="calendar__week-day holiday">Saturday</div>
-					</div>
-					<div class="calendar__dates">
-						
-					</div>
-				</div>
-				<div class="arrow">
-					<button class="arrow__next">&gt;</button>
-				</div>
+		<!-- <h3 class="showDate"></h3> -->
+	</header>
+	
+
+	<div class="container">
+		<!-- <div class="arrow">
+			<button class="arrow__prev">&lt;</button>  
+		</div> -->
+
+		<div class="month-prev">
+			<h3 class="showDatePrev"></h3>
+			<div class="month__week">
+				<div class="month__week-day holiday">Sun</div>
+				<div class="month__week-day">Mon</div>
+				<div class="month__week-day">Tue</div>
+				<div class="month__week-day">Wed</div>
+				<div class="month__week-day">Thu</div>
+				<div class="month__week-day">Fri</div>
+				<div class="month__week-day holiday">Sat</div>
+			</div>
+			<div class="month-prev__dates">
+			</div>
 		</div>
-		<footer>
-			<button class="btn-today">Go on Today</button>
 
-		</footer>
-	</main>
+		<div class="month-current">
+			<h3 class="showDateNow"></h3>
+			<div class="month__week">
+				<div class="month__week-day holiday">Sun</div>
+				<div class="month__week-day">Mon</div>
+				<div class="month__week-day">Tue</div>
+				<div class="month__week-day">Wed</div>
+				<div class="month__week-day">Thu</div>
+				<div class="month__week-day">Fri</div>
+				<div class="month__week-day holiday">Sat</div>
+			</div>
+			<div class="month-current__dates">
+			</div>
+		</div>
 
-	<!-- <script type="text/javascript" src="script.js"></script> -->
-	<script type="text/javascript" src="script_cal.js"></script>
+
+		<div class="month-next">
+			<h3 class="showDateNext"></h3>
+			<div class="month__week">
+				<div class="month__week-day holiday">Sun</div>
+				<div class="month__week-day">Mon</div>
+				<div class="month__week-day">Tue</div>
+				<div class="month__week-day">Wed</div>
+				<div class="month__week-day">Thu</div>
+				<div class="month__week-day">Fri</div>
+				<div class="month__week-day holiday">Sat</div>
+			</div>
+			<div class="month-next__dates">
+			</div>
+		</div>
+
+		<!-- <div class="arrow">
+			<button class="arrow__next">&gt;</button>
+		</div> -->
+	</div>
+
+
+
+	<footer>
+		<button class="btn-today">Go on Today</button>
+	</footer>
+</main>
+
+<!-- <script type="text/javascript" src="script.js"></script> -->
+<script type="text/javascript" src="script_cal.js"></script>
 
 </body>
 </html>
