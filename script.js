@@ -1,9 +1,15 @@
 
-let showDatePrev = document.querySelector(".showDatePrev"); // отобразим над календарём дату предыдущего месяца
-let showDateNow = document.querySelector(".showDateNow"); // отобразим над календарём дату текщего месяца
-let showDateNext = document.querySelector(".showDateNext"); // отобразим над календарём дату следующего месяца
+let showDatePrev = document.querySelector(".showDatePrev"); //  над календарём дата предыдущего месяца
+let showDateNow = document.querySelector(".showDateNow"); //  над календарём дата текщего месяца
+let showDateNext = document.querySelector(".showDateNext"); //  над календарём дата следующего месяца
 
-let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let months = ["January", "February", "March", "April", "May", "June", 
+"July", "August", "September", "October", "November", "December"];
+
+let dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let week;
+ // = document.querySelector(".month__week"); // строка для названий дней недели
+
 
 let btnPrev  = document.querySelector(".month-prev");   // кнопка перехода на предыдущий месяц
 let btnNext  = document.querySelector(".month-next");   // кнопка перехода на следущий месяц
@@ -18,34 +24,35 @@ let selectedYear, yearToday;
 let selectedMonth, monthToday;
 let selectedDate, dateToday;
 
-
-
-// ==================== ползунок =================================
-function catchNumber() {
-	
-	let value = document.getElementById("nr").value;
-	btnToday.style.color = "hsl("+value+", 100%, 50%)";
-	showDateNow.style.color = "hsl("+value+", 100%, 50%)";
-	showDatePrev.style.color = "hsl("+value+", 100%, 50%)";
-	showDateNext.style.color = "hsl("+value+", 100%, 50%)";
-	// let dayToday  = document.querySelector(".today"); 	// число сегодня на календаре
-	dayToday.style.color = "hsl("+value+", 100%, 50%)";
-
-};
+let value = document.getElementById("nr").value; // значение цвета по HSL, по ползунку
 
 
 // ================= отображаем текущий месяц в календаре ===========================
 showCurrentMonth();
-let dayToday  = document.querySelector(".today"); 	// число сегодня на календаре
+
+
+// ==================== ползунок =================================
+function catchNumber() {
+	value = document.getElementById("nr").value;
+	checkDisplayToday();
+	btnToday.style.color = "hsl("+value+", 100%, 50%)";
+	showDateNow.style.color = "hsl("+value+", 100%, 50%)";
+	showDatePrev.style.color = "hsl("+value+", 100%, 50%)";
+	showDateNext.style.color = "hsl("+value+", 100%, 50%)";
+};
+
+
+// ================= вычисляем сегодняшнюю дату и отображаем 3 месяца
+
 function showCurrentMonth() {
 	let today = new Date(); // определяем текущую дату
 	selectedYear = yearToday = today.getFullYear();
 	selectedMonth = monthToday = today.getMonth();
 	selectedDate = dateToday = today.getDate();
-
-	showSelectedMonth(yearToday, monthToday, dateToday, monthNow, showDateNow); // отображаем текущий месяц в календаре
-	showSelectedMonth(yearToday, monthToday-1, dateToday, monthPrev, showDatePrev); // отображаем предыдущий месяц 
-	showSelectedMonth(yearToday, monthToday+1, dateToday, monthNext, showDateNext); // отображаем следующий месяц 
+	showSelectedMonth(yearToday, monthToday, dateToday, monthNow, showDateNow); // текущий месяц 
+	showSelectedMonth(yearToday, monthToday-1, dateToday, monthPrev, showDatePrev); // предыдущий месяц 
+	showSelectedMonth(yearToday, monthToday+1, dateToday, monthNext, showDateNext); // следующий месяц 
+	checkDisplayToday();
 }
 
 
@@ -53,25 +60,37 @@ function showCurrentMonth() {
 // ============ клик на кнопку ПРЕДЫДУЩИЙ месяц ================
 btnPrev.onclick = function() {
 	selectedMonth--;
-	console.log("selectedMonth = ", selectedMonth);
-	showSelectedMonth(selectedYear, selectedMonth, selectedDate, monthNow, showDateNow); // отображаем предыдущий месяц в календаре
-	showSelectedMonth(selectedYear, selectedMonth-1, selectedDate, monthPrev, showDatePrev);
-	showSelectedMonth(selectedYear, selectedMonth+1, selectedDate, monthNext, showDateNext);
+	showAnotherMonth();
 }
 
 // ============ клик на кнопку СЛЕДУЮЩИЙ месяц ================
 btnNext.onclick = function() {
 	selectedMonth++;
-	console.log("selectedMonth = ", selectedMonth);
-	showSelectedMonth(selectedYear, selectedMonth, selectedDate, monthNow, showDateNow); // отображаем следущий месяц в календаре
-	showSelectedMonth(selectedYear, selectedMonth-1, selectedDate, monthPrev, showDatePrev);
-	showSelectedMonth(selectedYear, selectedMonth+1, selectedDate, monthNext, showDateNext);
+	showAnotherMonth();
+}
+
+function showAnotherMonth() {
+	showSelectedMonth(selectedYear, selectedMonth, selectedDate, monthNow, showDateNow); // текущий месяц 
+	showSelectedMonth(selectedYear, selectedMonth-1, selectedDate, monthPrev, showDatePrev); // предыдущий 
+	showSelectedMonth(selectedYear, selectedMonth+1, selectedDate, monthNext, showDateNext); // следующий 
+	checkDisplayToday();
 }
 
 
 // ============ клик на кнопку перехода на текущий месяц ================
 btnToday.onclick = function() {
 	showCurrentMonth();
+}
+
+
+
+
+// ================ задаём цвет сегодняшнего числа, если оно отображается в одном из месяцев ===========
+function checkDisplayToday() {
+	let dayToday  = document.querySelector(".today"); 	// число сегодня на календаре
+	if (dayToday != null) {
+		dayToday.style.color = "hsl("+value+", 100%, 50%)";
+	}
 }
 
 
@@ -86,11 +105,35 @@ function showSelectedMonth(year, month, date, dates, showDateBlock) {
 	let myYear = myDate.getFullYear();			// год
 	let iMonth = myMonth = myDate.getMonth();	// месяц текущий и для сравнения
 
-	// console.log("выбран сейчас ", myDate.toDateString());
-	console.log("выбран сейчас ", month, year);
-	btnToday.innerText = "Go on Today: "+dateToday+" "+months[monthToday]+" "+yearToday; // вывод в button
+	// выводим сообщение и сегодняшнюю дату в кнопке возврата
+	btnToday.innerText = "Go on Today: "+dateToday+" "+months[monthToday]+" "+yearToday; 
+	// название месяца и год над календарем
+	showDateBlock.innerText = months[myMonth]+" "+myYear; 
 
-	showDateBlock.innerText = months[myMonth]+" "+myYear;// вывод в хедере над календарем
+
+/*
+	// ====== выводим названия дней недели из массива =======
+	console.log(week);
+	if (week != undefined) {week.remove();}
+	
+	week = document.createElement("div");
+	week.className = "month__week";
+	showDateBlock.after(week);
+
+	// названия дней недели <div class="month__week-day">
+	for (var dn = 0; dn < 7; dn++) {
+	 	
+		let weekDay = document.createElement("div");
+		if (dn == 0 || dn == 6) {
+			weekDay.className = "month__week-day holiday";
+		} else {
+			weekDay.className = "month__week-day";
+		}
+		weekDay.innerText = dayName[dn];
+		week.append(weekDay);
+	}
+*/
+
 
 
 
@@ -102,7 +145,7 @@ function showSelectedMonth(year, month, date, dates, showDateBlock) {
 		iMonth = (new Date(myYear, myMonth, iDay)).getMonth();
 	}
 	numDays = iDay - 1; // получаем количество дней в текущем месяце
-	console.log("всего в текущем Month дней = ", numDays);
+	// console.log("всего в текущем Month дней = ", numDays);
 
 	// ========  получаем номер (0-6) 1-го дня недели в выбранном месяце
 	let firstDay = (new Date(year, month, 1)).getDay();
@@ -150,8 +193,7 @@ function showSelectedMonth(year, month, date, dates, showDateBlock) {
 		dates.append(itemDay);
 		d++;
 	}
-
-	
+	// dayToday.style.color = "hsl("+value+", 100%, 50%)";
 
 }
 

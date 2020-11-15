@@ -25,7 +25,7 @@ header {
 	color: #999;
 }
 
-/*REGULATOR*/
+/* регулятор цвета */
 #nr {
 	width: 600px;
 	background-color: red;
@@ -35,7 +35,6 @@ header {
 footer {
 	grid-area: btn;
 }
-
 
 .nameMonth {
 	font-size: 26px;
@@ -126,6 +125,7 @@ footer {
 	font-weight: normal;
 	color: #ccc;
 }
+
 
 .btn-today {
 	display: block;
