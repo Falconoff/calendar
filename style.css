@@ -14,6 +14,8 @@ main {
 					"prv now nxt"
 					"btn btn btn";
 	grid-gap: 20px;
+
+	/*background-color: cyan;*/
 }
 
 header {
@@ -22,14 +24,19 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #999;
+	color: #888;
 }
 
 /* регулятор цвета */
 #nr {
 	width: 600px;
 	background-color: red;
-	margin-left: 20px;
+	margin: 0 20px;
+}
+
+.theme {margin-left: 20px;}
+.theme input {
+	margin: 0 10px;
 }
 
 footer {
@@ -40,7 +47,7 @@ footer {
 	font-size: 26px;
 	color: blue;
 	text-align: center;
-	text-shadow: 1px 1px 4px #555;
+	text-shadow: 1px 1px 4px #888;
 }
 
 /* текущий месяц */
@@ -111,11 +118,11 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-top: 1px solid #ddd;
+	border-top: 1px solid #aaa;
 }
 
 .today {
-	background-color: #E6E6E6;
+	background-color: #aaa;
 	font-weight: bold;
 	color: blue;
 }
@@ -137,14 +144,20 @@ footer {
 	color: blue;
 	text-shadow: 1px 1px 2px #555;
 	background-image: linear-gradient(#DDDDDD, #ffffff, #ffffff, #C6C6C6);
-	/*transition: all ease 0.5s;*/
+	transition: all ease 0.5s;
 	cursor: pointer;
 }
 .btn-today:hover {
 	background-image: linear-gradient(#E7E7E7, #ffffff, #ffffff, #D7D7D7);
 }
 
-
+.btn-black {
+	background-image: linear-gradient(#333, #888, #888, #555);
+	border-color: #555;
+}
+.btn-black:hover {
+	background-image: linear-gradient(#444, #999, #aaa, #666);
+} 
 
 
 /* ======================= media-queries ===================== */
@@ -155,6 +168,7 @@ footer {
 						"prv . nxt"
 						"now now now"
 						"btn btn btn";
+		padding: 10px;
 	}
 	.month-current {
 		grid-template-rows: 50px 50px 400px;
@@ -162,6 +176,9 @@ footer {
 	.month-current .month__week,
 	.month-current .month-current__dates {
 		grid-template-columns: repeat(7, 80px);
+	}
+	#nr {
+		width: 500px;
 	}
 }
 
@@ -172,5 +189,8 @@ footer {
 	.month-current .month__week,
 	.month-current .month-current__dates {
 		grid-template-columns: repeat(7, 60px);
+	}
+	#nr {
+		width: 300px;
 	}
 }

@@ -7,9 +7,6 @@ let months = ["January", "February", "March", "April", "May", "June",
 "July", "August", "September", "October", "November", "December"];
 
 let dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let week;
- // = document.querySelector(".month__week"); // строка для названий дней недели
-
 
 let btnPrev  = document.querySelector(".month-prev");   // кнопка перехода на предыдущий месяц
 let btnNext  = document.querySelector(".month-next");   // кнопка перехода на следущий месяц
@@ -27,12 +24,36 @@ let selectedDate, dateToday;
 let value = document.getElementById("nr").value; // значение цвета по HSL, по ползунку
 
 
+
+// ====== выводим названия дней недели из массива =======
+createWeek(showDatePrev);
+createWeek(showDateNow);
+createWeek(showDateNext);
+
+function createWeek(month) {
+	let week = document.createElement("div");
+	week.className = "month__week";
+	month.after(week);
+	// названия дней недели <div class="month__week-day">
+	for (var dn = 0; dn < 7; dn++) {
+		let weekDay = document.createElement("div");
+		if (dn == 0 || dn == 6) {
+			weekDay.className = "month__week-day holiday";
+		} else {
+			weekDay.className = "month__week-day";
+		};
+		weekDay.innerText = dayName[dn];
+		week.append(weekDay);
+	}
+}
+
+
 // ================= отображаем текущий месяц в календаре ===========================
 showCurrentMonth();
 
 
 // ==================== ползунок =================================
-function catchNumber() {
+function catchColor() {
 	value = document.getElementById("nr").value;
 	checkDisplayToday();
 	btnToday.style.color = "hsl("+value+", 100%, 50%)";
@@ -43,7 +64,6 @@ function catchNumber() {
 
 
 // ================= вычисляем сегодняшнюю дату и отображаем 3 месяца
-
 function showCurrentMonth() {
 	let today = new Date(); // определяем текущую дату
 	selectedYear = yearToday = today.getFullYear();
@@ -107,34 +127,15 @@ function showSelectedMonth(year, month, date, dates, showDateBlock) {
 
 	// выводим сообщение и сегодняшнюю дату в кнопке возврата
 	btnToday.innerText = "Go on Today: "+dateToday+" "+months[monthToday]+" "+yearToday; 
-	// название месяца и год над календарем
-	showDateBlock.innerText = months[myMonth]+" "+myYear; 
-
-
-/*
-	// ====== выводим названия дней недели из массива =======
-	console.log(week);
-	if (week != undefined) {week.remove();}
 	
-	week = document.createElement("div");
-	week.className = "month__week";
-	showDateBlock.after(week);
-
-	// названия дней недели <div class="month__week-day">
-	for (var dn = 0; dn < 7; dn++) {
-	 	
-		let weekDay = document.createElement("div");
-		if (dn == 0 || dn == 6) {
-			weekDay.className = "month__week-day holiday";
-		} else {
-			weekDay.className = "month__week-day";
-		}
-		weekDay.innerText = dayName[dn];
-		week.append(weekDay);
+	// название месяца и год над календарем
+	if (showDateBlock == showDatePrev) {
+		showDateBlock.innerText = "<< "+months[myMonth]+" "+myYear; 
+	} else if (showDateBlock == showDateNext) {
+		showDateBlock.innerText = months[myMonth]+" "+myYear+" >>"; 
+	} else {
+		showDateBlock.innerText = " "+months[myMonth]+" "+myYear+" "; 
 	}
-*/
-
-
 
 
 	// =========== определяем количество дней в текущем месяце ===========
@@ -158,7 +159,7 @@ function showSelectedMonth(year, month, date, dates, showDateBlock) {
 	// console.log("номер последнего дня месяца = ", lastDay);
 
 	let i=1;
-	// ВЫВОДИМ ЯЧЕЙКУ предыдущего дня предыдущего месяца <div class="month__day disabled">дата</div>
+	// ===== ВЫВОДИМ ЯЧЕЙКУ предыдущего дня предыдущего месяца <div class="month__day disabled">дата</div>
 	while (i <= firstDay) {
 		let prevDate = (new Date(year, month, 1 - i)).getDate(); //получаем дату -1 дня
 		let itemDay = document.createElement("div");
@@ -168,7 +169,7 @@ function showSelectedMonth(year, month, date, dates, showDateBlock) {
 		i++;
 	}
 
-	// ВЫВОДИМ ЯЧЕЙКИ дней текущего месяца <div class="month__day">дата</div>
+	// ===== ВЫВОДИМ ЯЧЕЙКИ дней текущего месяца <div class="month__day">дата</div>
 	let j=1;
 	while (j <= numDays) {
 		let itemDay = document.createElement("div");
@@ -183,7 +184,7 @@ function showSelectedMonth(year, month, date, dates, showDateBlock) {
 		j++;
 	}
 
-	// ВЫВОДИМ ЯЧЕЙКУ следущего дня следущего месяца <div class="month__day disabled">дата</div>
+	// ===== ВЫВОДИМ ЯЧЕЙКУ следущего дня следущего месяца <div class="month__day disabled">дата</div>
 	let diff = 6 - lastDay; // сколько надо добавить ячеек до конца недели
 	let d = 1;
 	while (d <= diff) {
@@ -193,13 +194,34 @@ function showSelectedMonth(year, month, date, dates, showDateBlock) {
 		dates.append(itemDay);
 		d++;
 	}
-	// dayToday.style.color = "hsl("+value+", 100%, 50%)";
 
 }
 
 
 
+// ============================= Black Theme ==================================
+let mainBlock = document.querySelector('body');          // body
+let dayItem = document.querySelector('.month__day');     // ячейка дня
 
+function changeTheme(){
+	let dayToday = document.querySelector('.today');	     // сегодняшнее число
+	let blackTheme = document.getElementById('blackTheme');  // checkbox" id="blackTheme"
+	if (blackTheme.checked) {
+		console.log("blackTheme value = black theme");
+		mainBlock.style.color = "white";
+		mainBlock.style.background = "black";
+		btnToday.classList.add("btn-black");
+	} else {
+		console.log("blackTheme value = light theme");
+		mainBlock.style.color = "black";
+		mainBlock.style.background = "white";
+		btnToday.classList.remove("btn-black");
+	}
+}
+
+
+
+// ======================================================================================================
 // это если захочется время выводить:
 	// let hours = date.getHours();
 	// let minutes = date.getMinutes();
