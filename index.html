@@ -1,75 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>calendar</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="style_input.css">
-</head>
-<body>
+  <head>
+    <title>calendar</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style_input.css" />
+  </head>
+  <body>
+    <header>
+      <p>Color</p>
+      <input
+        type="range"
+        id="nr"
+        min="0"
+        max="360"
+        value="240"
+        step="2"
+        class="myRange"
+        oninput="catchColor()"
+        name=""
+      />
+      <div class="theme">
+        <label for="blackTheme">Black Theme</label>
+        <input
+          type="checkbox"
+          id="blackTheme"
+          name="blackTheme"
+          value="black"
+          onchange="changeTheme()"
+        />
+      </div>
+    </header>
 
-	<main>
-		<header>
-			<p>Color</p>
-			<input type="range" id="nr" min="0" max="360" value="240" step="2" class="myRange" oninput="catchColor()" name="">
-			<div class="theme">
-				<label for="blackTheme">Black Theme</label>
-				<input type="checkbox" id="blackTheme" name="blackTheme" value="black" onchange="changeTheme()">
-			</div>
-		</header>
-		
-		<div class="month-prev">
-			<h3 class="nameMonth showDatePrev"></h3>
-			<!-- <div class="month__week">
-				<div class="month__week-day holiday">Sun</div>
-				<div class="month__week-day">Mon</div>
-				<div class="month__week-day">Tue</div>
-				<div class="month__week-day">Wed</div>
-				<div class="month__week-day">Thu</div>
-				<div class="month__week-day">Fri</div>
-				<div class="month__week-day holiday">Sat</div>
-			</div> -->
-			<div class="month-prev__dates">
-			</div>
-		</div>
+    <div class="month-prev">
+      <h3 class="nameMonth showDatePrev"></h3>
+      <div class="month-prev__dates"></div>
+    </div>
 
-		<div class="month-current">
-			<h3 class="nameMonth showDateNow"></h3>
-			<!-- <div class="month__week">
-				<div class="month__week-day holiday">Sun</div>
-				<div class="month__week-day">Mon</div>
-				<div class="month__week-day">Tue</div>
-				<div class="month__week-day">Wed</div>
-				<div class="month__week-day">Thu</div>
-				<div class="month__week-day">Fri</div>
-				<div class="month__week-day holiday">Sat</div>
-			</div> -->
-			<div class="month-current__dates">
-			</div>
-		</div>
+    <div class="month-current">
+      <h3 class="nameMonth showDateNow"></h3>
+      <div class="month-current__dates"></div>
+    </div>
 
-		<div class="month-next">
-			<h3 class="nameMonth showDateNext"></h3>
-			<!-- <div class="month__week">
-				<div class="month__week-day holiday">Sun</div>
-				<div class="month__week-day">Mon</div>
-				<div class="month__week-day">Tue</div>
-				<div class="month__week-day">Wed</div>
-				<div class="month__week-day">Thu</div>
-				<div class="month__week-day">Fri</div>
-				<div class="month__week-day holiday">Sat</div>
-			</div> -->
-			<div class="month-next__dates">
-			</div>
-		</div>
+    <div class="month-next">
+      <h3 class="nameMonth showDateNext"></h3>
+      <div class="month-next__dates"></div>
+    </div>
 
-		<footer>
-			<button class="btn-today">Go on Today</button>
-		</footer>
-	</main>
+    <footer>
+      <button class="btn-today">Go on Today</button>
+    </footer>
 
-<script type="text/javascript" src="script.js"></script>
-
-</body>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
 </html>

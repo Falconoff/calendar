@@ -1,196 +1,195 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-main {
-	margin: 10px auto;
-	max-width: 1200px;
-	font-family: Arial;
-	/*font-weight: bold;*/
-	display: grid;
-	grid-template:  "bgr bgr bgr"
-					"prv now nxt"
-					"btn btn btn";
-	grid-gap: 20px;
-
-	/*background-color: cyan;*/
+body {
+  margin: 10px auto;
+  max-width: 1200px;
+  font-family: Arial;
+  /*font-weight: bold;*/
+  display: grid;
+  grid-template:
+    "bgr bgr bgr"
+    "prv now nxt"
+    "btn btn btn";
+  grid-gap: 20px;
 }
 
 header {
-	grid-area: bgr;
-	height: 60px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: #888;
+  grid-area: bgr;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
 }
 
 /* регулятор цвета */
 #nr {
-	width: 600px;
-	background-color: red;
-	margin: 0 20px;
+  width: 600px;
+  background-color: red;
+  margin: 0 20px;
 }
 
-.theme {margin-left: 20px;}
+.theme {
+  margin-left: 20px;
+}
 .theme input {
-	margin: 0 10px;
+  margin: 0 10px;
 }
 
 footer {
-	grid-area: btn;
+  grid-area: btn;
 }
 
 .nameMonth {
-	font-size: 26px;
-	color: blue;
-	text-align: center;
-	text-shadow: 1px 1px 4px #888;
+  font-size: 26px;
+  color: blue;
+  text-align: center;
+  text-shadow: 1px 1px 4px #888;
 }
 
 /* текущий месяц */
-.month-current { 
-	grid-area: now;
-	display: grid;
-	grid-template-rows: 50px 50px 300px;
-	justify-content: center;
-	font-size: 20px;
+.month-current {
+  grid-area: now;
+  display: grid;
+  grid-template-rows: 50px 50px 300px;
+  justify-content: center;
+  font-size: 20px;
 }
 .month-current .month__week,
 .month-current .month-current__dates {
-	display: grid;
-	grid-template-columns: repeat(7, 60px);
-	text-align: center;
+  display: grid;
+  grid-template-columns: repeat(7, 60px);
+  text-align: center;
 }
 
-.month-prev, 
+.month-prev,
 .month-next {
-	display: grid;
-	grid-template-rows: 40px 30px 190px;
-	justify-content: center;
-	align-content: center;
-	font-size: 16px;
-	cursor: pointer;
-	opacity: 0.5;
-	transition: all ease 0.5s;
+  display: grid;
+  grid-template-rows: 40px 30px 190px;
+  justify-content: center;
+  align-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all ease 0.5s;
 }
 
 .month-prev {
-	grid-area: prv;
+  grid-area: prv;
 }
 
 .month-next {
-	grid-area: nxt;
+  grid-area: nxt;
 }
 
-.month-prev:hover, 
+.month-prev:hover,
 .month-next:hover {
-	opacity: 0.9;
+  opacity: 0.9;
 }
 
 /* текущая дата над месяцем */
 .showDatePrev,
-.showDateNext {   
-	font-size: 20px;
+.showDateNext {
+  font-size: 20px;
 }
 
 .month-prev .month__week,
 .month-next .month__week,
-.month-prev__dates, 
+.month-prev__dates,
 .month-next__dates {
-	display: grid;
-	grid-template-columns: repeat(7, 40px);
-	text-align: center;
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  text-align: center;
 }
 
 .month__week-day {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .holiday {
-	color: red;
+  color: red;
 }
 
 /* ячейка дня в календаре */
 .month__day {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-top: 1px solid #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #aaa;
 }
 
 .today {
-	background-color: #aaa;
-	font-weight: bold;
-	color: blue;
+  background-color: #aaa;
+  font-weight: bold;
+  color: blue;
 }
 
 .disabled {
-	/*background-color: #eee;*/
-	font-weight: normal;
-	color: #ccc;
+  font-weight: normal;
+  color: #ccc;
 }
-
 
 .btn-today {
-	display: block;
-	padding: 10px 20px;
-	margin: 5px auto;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	font-size: 20px;
-	color: blue;
-	text-shadow: 1px 1px 2px #555;
-	background-image: linear-gradient(#DDDDDD, #ffffff, #ffffff, #C6C6C6);
-	transition: all ease 0.5s;
-	cursor: pointer;
+  display: block;
+  padding: 10px 20px;
+  margin: 5px auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 20px;
+  color: blue;
+  text-shadow: 1px 1px 2px #555;
+  background-image: linear-gradient(#dddddd, #ffffff, #ffffff, #c6c6c6);
+  transition: all ease 0.5s;
+  cursor: pointer;
 }
 .btn-today:hover {
-	background-image: linear-gradient(#E7E7E7, #ffffff, #ffffff, #D7D7D7);
+  background-image: linear-gradient(#e7e7e7, #ffffff, #ffffff, #d7d7d7);
 }
 
 .btn-black {
-	background-image: linear-gradient(#333, #888, #888, #555);
-	border-color: #555;
+  background-image: linear-gradient(#333, #888, #888, #555);
+  border-color: #555;
 }
 .btn-black:hover {
-	background-image: linear-gradient(#444, #999, #aaa, #666);
-} 
-
+  background-image: linear-gradient(#444, #999, #aaa, #666);
+}
 
 /* ======================= media-queries ===================== */
 
-@media screen and (max-width: 991px) and (orientation:portrait) {
-	main {
-		grid-template:  "bgr bgr bgr"
-						"prv . nxt"
-						"now now now"
-						"btn btn btn";
-		padding: 10px;
-	}
-	.month-current {
-		grid-template-rows: 50px 50px 400px;
-	}
-	.month-current .month__week,
-	.month-current .month-current__dates {
-		grid-template-columns: repeat(7, 80px);
-	}
-	#nr {
-		width: 500px;
-	}
+@media screen and (max-width: 991px) and (orientation: portrait) {
+  main {
+    grid-template:
+      "bgr bgr bgr"
+      "prv . nxt"
+      "now now now"
+      "btn btn btn";
+    padding: 10px;
+  }
+  .month-current {
+    grid-template-rows: 50px 50px 400px;
+  }
+  .month-current .month__week,
+  .month-current .month-current__dates {
+    grid-template-columns: repeat(7, 80px);
+  }
+  #nr {
+    width: 500px;
+  }
 }
 
 @media screen and (max-width: 650px) {
-	.month-current {
-		grid-template-rows: 50px 50px 250px;
-	}
-	.month-current .month__week,
-	.month-current .month-current__dates {
-		grid-template-columns: repeat(7, 60px);
-	}
-	#nr {
-		width: 300px;
-	}
+  .month-current {
+    grid-template-rows: 50px 50px 250px;
+  }
+  .month-current .month__week,
+  .month-current .month-current__dates {
+    grid-template-columns: repeat(7, 60px);
+  }
+  #nr {
+    width: 300px;
+  }
 }
